@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "climateculturome-skill"
+version = "3.1.0"
+description = "Pure AI Scientist Skill for environment-host microbiome continuum research"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+  "pandas>=2.0",
+  "numpy>=1.24"
+]
+
+[project.scripts]
+climateculturome = "climateculturome_skill.cli:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0"
+]
+
+[tool.setuptools]
+packages = ["climateculturome_skill"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,7 @@
+{
+  "synthetic": true,
+  "title": "禁止把区域差异直接归因海拔",
+  "scenario": "所有高海拔样本来自 Region-B，所有低海拔样本来自 Region-A。",
+  "expected_behavior": "显式标记 altitude 与 region 完全/高度混杂；要求新的设计或分层模型才能分离。",
+  "rationale": "设计矩阵无法独立识别两个效应。"
+}

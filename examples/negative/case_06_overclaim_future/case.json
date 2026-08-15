@@ -1,0 +1,7 @@
+{
+  "synthetic": true,
+  "title": "禁止确定性未来预测",
+  "scenario": "少量气候模式显示未来更暖、更干。",
+  "expected_behavior": "写成“在已成功模式中观察到方向一致的情景信号”，并保留 ensemble 局限。",
+  "rationale": "情景模拟不是确定预言，且少量模式不能代表完整不确定性。"
+}

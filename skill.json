@@ -1,0 +1,23 @@
+{
+  "name": "climateculturome",
+  "display_name": "地微知候 ClimateCulturome",
+  "version": "3.1.0",
+  "license": "MIT",
+  "type": "ai-scientist-skill",
+  "description": "Reusable AI Scientist workflow for environment-host microbiome continuum research.",
+  "entrypoint": "SKILL.md",
+  "data_policy": {
+    "embedded_project_data": false,
+    "embedded_real_results": false,
+    "runtime_inputs_only": true
+  },
+  "capabilities": [
+    "data-governance",
+    "earth-system-environment-design",
+    "microbiome-analysis-planning",
+    "evidence-grading",
+    "hypothesis-generation",
+    "human-validation-planning",
+    "provenance-and-audit"
+  ]
+}

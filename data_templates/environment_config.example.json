@@ -1,0 +1,20 @@
+{
+  "variables": [
+    "temperature",
+    "precipitation",
+    "surface_pressure",
+    "relative_humidity",
+    "soil_moisture",
+    "shortwave_radiation",
+    "longwave_radiation",
+    "cloud_cover"
+  ],
+  "windows": [
+    "sampling_month",
+    "previous_30d",
+    "previous_3m",
+    "previous_12m"
+  ],
+  "require_verified_coordinates": true,
+  "allow_proxy_coordinates": false
+}

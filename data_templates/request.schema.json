@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClimateCulturome Request",
+  "type": "object",
+  "properties": {
+    "dataset_registry": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sample_metadata": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "microbiome_summary": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sample_level_feature_matrix": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "taxonomy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "local_environment": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "external_environment_config": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "research_question": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "research_question"
+  ]
+}

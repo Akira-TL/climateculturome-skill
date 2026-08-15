@@ -1,0 +1,7 @@
+{
+  "synthetic": true,
+  "title": "跨设计同名站点必须分开",
+  "scenario": "Dataset-A 与 Dataset-B 都包含 site_code=S01，但采样日期和采样方案不同。",
+  "expected_behavior": "保留两个 dataset_id，禁止只按 site_code 自动合并；要求显式 linkage key。",
+  "rationale": "同名地点不等于同一采样单元，错误合并会制造伪重复或伪时间序列。"
+}

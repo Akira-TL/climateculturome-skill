@@ -1,0 +1,10 @@
+{
+  "dataset_registry": "<path/to/dataset_registry.csv>",
+  "sample_metadata": "<path/to/sample_metadata.csv>",
+  "microbiome_summary": "<path/to/microbiome_summary.csv>",
+  "sample_level_feature_matrix": null,
+  "taxonomy": null,
+  "local_environment": null,
+  "external_environment_config": "<path/to/environment_config.json>",
+  "research_question": "<describe the scientific question>"
+}

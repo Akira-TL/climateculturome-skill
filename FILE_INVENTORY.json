@@ -1,0 +1,347 @@
+[
+  {
+    "path": ".gitignore",
+    "size": 459,
+    "sha256": "f5dbd9eda1cf22e60e70410d1ff19a79a579dd2b99938aef040733a8d4fdc500"
+  },
+  {
+    "path": "CHANGELOG.md",
+    "size": 675,
+    "sha256": "b9c79953c0b042a86ecb8878e6225b74bb3c49e26d5a5c4f497e5f251183ab61"
+  },
+  {
+    "path": "LICENSE",
+    "size": 1086,
+    "sha256": "3bf41f7981bb49f5dca6a14d45a422cc231c359abb95e5d0a889081992200f77"
+  },
+  {
+    "path": "MANIFEST.json",
+    "size": 548,
+    "sha256": "a7cf1c7028459d00a59034e1f6004ba87634f127f65125f8ab8609e852055d6f"
+  },
+  {
+    "path": "README.md",
+    "size": 2255,
+    "sha256": "4f527bece2ebe8b245e0e306cf1f08774b1fad75935877e6a25a2159b019ae92"
+  },
+  {
+    "path": "SKILL.md",
+    "size": 8676,
+    "sha256": "ecf0adc9cccec961389395688e2feecb83c2af6e88ed9bf0981c2bf3b5ca853d"
+  },
+  {
+    "path": "VALIDATION.md",
+    "size": 456,
+    "sha256": "bdba13a2e185d69b34fc86718b8d3beeb4fa33503db07a9acb01178995b46d40"
+  },
+  {
+    "path": "climateculturome_skill/__init__.py",
+    "size": 22,
+    "sha256": "615a05efa953d29ddd22caa984d9c35aea9289ade064fd52d5e4185d9f456d21"
+  },
+  {
+    "path": "climateculturome_skill/audit.py",
+    "size": 752,
+    "sha256": "f66d85da21b5ab63ece61abd2e12340d29fec5d19da9231bf5d190201365d0ff"
+  },
+  {
+    "path": "climateculturome_skill/cli.py",
+    "size": 2911,
+    "sha256": "458041b589cff54510ca57a5ed9bc69970de4bfda25823ee8e0a350ff332a0a4"
+  },
+  {
+    "path": "climateculturome_skill/evidence.py",
+    "size": 1195,
+    "sha256": "214056e139349549523fe1508b68680ca2cbc5e24456100d56a046507189e931"
+  },
+  {
+    "path": "climateculturome_skill/governance.py",
+    "size": 3613,
+    "sha256": "0b96684fea556833907c6ee259388ccc529e4773d7e01344ea51eedc7a89548f"
+  },
+  {
+    "path": "climateculturome_skill/hypotheses.py",
+    "size": 2610,
+    "sha256": "b174d694b37039f49f09f7344a9f155b557bd6e474a973f11a270aca126e689a"
+  },
+  {
+    "path": "climateculturome_skill/microbiome.py",
+    "size": 3306,
+    "sha256": "f2a8c791904f1e79aaf0f90b429b7f787d5d7a06e3ae02d5e604801075f38e3f"
+  },
+  {
+    "path": "climateculturome_skill/provenance.py",
+    "size": 828,
+    "sha256": "26fe4119e284025e711c4ba17f9dfd23a0a2aa3a3e3d44308c3240aeff6c52c9"
+  },
+  {
+    "path": "data_templates/claim_ledger_template.csv",
+    "size": 109,
+    "sha256": "a6b342b905ffd2310b8d69ed20720e59e733930e3e60b5626d5b99ed99e37b1f"
+  },
+  {
+    "path": "data_templates/data_source_manifest_template.csv",
+    "size": 119,
+    "sha256": "4d68fff41ad75bca76049d54bab639b764d0adb2ed87b6c95934ae37c6921a92"
+  },
+  {
+    "path": "data_templates/environment_config.example.json",
+    "size": 381,
+    "sha256": "a7f16f968f00b1c10a0622c8ac2eb479507dc23d1aa9527358a55210dd3d9e50"
+  },
+  {
+    "path": "data_templates/microbiome_summary_template.csv",
+    "size": 84,
+    "sha256": "b7b629dd6aa20c088239a88f5560db12f4f7cf33fdcb4b478020869cfe2efe3e"
+  },
+  {
+    "path": "data_templates/request.example.json",
+    "size": 391,
+    "sha256": "0466720fe7ca2aae7385cb74a3c677b38981e93c72bf0b844a4f104072f8d358"
+  },
+  {
+    "path": "data_templates/request.schema.json",
+    "size": 892,
+    "sha256": "9e5957d297c9c74b1a19ede709512cf956f70b3e83ecd2dbc6a8a7c9aa3c5667"
+  },
+  {
+    "path": "data_templates/site_metadata_template.csv",
+    "size": 114,
+    "sha256": "fe2de7b3305a0418f4c71c120495861cde0618bd859c2bc7ac9dd112a0a00a8b"
+  },
+  {
+    "path": "examples/negative/case_01_false_significance/README.md",
+    "size": 383,
+    "sha256": "a86da9bead451b2647818727eda366128531f7734082f99ee6772cb596b1219b"
+  },
+  {
+    "path": "examples/negative/case_01_false_significance/case.json",
+    "size": 352,
+    "sha256": "59da6cbddd0e9bcbb8a864348e90c35aa28a73654299989f219eaeda8f29c337"
+  },
+  {
+    "path": "examples/negative/case_02_shared_equals_transfer/README.md",
+    "size": 379,
+    "sha256": "041f27e62cf03a67222ffa1b055ea247c211c1a740f6df9358f6cf17fb2a63fe"
+  },
+  {
+    "path": "examples/negative/case_02_shared_equals_transfer/case.json",
+    "size": 348,
+    "sha256": "ab784bc17a57323b83db18c1025ef9f2a576f53e48ca570983e22dad7c00bc8d"
+  },
+  {
+    "path": "examples/negative/case_03_fake_coordinates/README.md",
+    "size": 331,
+    "sha256": "97f082e84dafe1d9fc48381af574271ee9c7390227221715cbe03fcc736c6972"
+  },
+  {
+    "path": "examples/negative/case_03_fake_coordinates/case.json",
+    "size": 300,
+    "sha256": "8f30b212f5d01cb47463b9d53feef833e1d32510edcdd6ba70d9ee5e08b6c84c"
+  },
+  {
+    "path": "examples/negative/case_04_space_as_time/README.md",
+    "size": 403,
+    "sha256": "3f2f8943142f168163850cefcc8a13fc9df5b669425a110c02a3f2565fccafea"
+  },
+  {
+    "path": "examples/negative/case_04_space_as_time/case.json",
+    "size": 372,
+    "sha256": "8f01ffcf18c0692acc3e1a4887dcb8ff01ebd257684c8b04713a0af26d1215bd"
+  },
+  {
+    "path": "examples/negative/case_05_confounded_altitude/README.md",
+    "size": 398,
+    "sha256": "3edd40483e88a2cfc9b12c4395703abbaf327409a6f3b8987e653674fbe8888b"
+  },
+  {
+    "path": "examples/negative/case_05_confounded_altitude/case.json",
+    "size": 367,
+    "sha256": "027c0dfdc0483053d7f9c12d4b19babba4ab63a468332eaf0eb5258903f9e941"
+  },
+  {
+    "path": "examples/negative/case_06_overclaim_future/README.md",
+    "size": 389,
+    "sha256": "d7043e4551661ff3017d17595b344dd13ab01f0e04ca3cd4b00e5a492a43a66c"
+  },
+  {
+    "path": "examples/negative/case_06_overclaim_future/case.json",
+    "size": 358,
+    "sha256": "6ab36d2b2b177116fb488731f71e8ecb0f7d3adad25ad8163bc16adcf0d4148e"
+  },
+  {
+    "path": "examples/positive/case_01_design_separation/README.md",
+    "size": 439,
+    "sha256": "7c144175455c973f51bb1b38292c0c3a2087f2c9d89e4ebd7b61798700aea153"
+  },
+  {
+    "path": "examples/positive/case_01_design_separation/case.json",
+    "size": 408,
+    "sha256": "ed0a88f5ebe375045f362c04fe88b9627c4d9fadf362e50a3f924a22a3b18220"
+  },
+  {
+    "path": "examples/positive/case_02_shared_taxa_language/README.md",
+    "size": 358,
+    "sha256": "5702d34df19751a3c0288b486c4b89e1666960aef35df217c76fcc8a04388347"
+  },
+  {
+    "path": "examples/positive/case_02_shared_taxa_language/case.json",
+    "size": 327,
+    "sha256": "a461a52d126508f60186c8e7e845df846834e544ab82869f1933dac060046c8a"
+  },
+  {
+    "path": "examples/positive/case_03_environment_axis/README.md",
+    "size": 402,
+    "sha256": "1b45e6ee33b2ea4b77f9c8f2cd6b29acaf0a27aee9483482758ac5047be2722f"
+  },
+  {
+    "path": "examples/positive/case_03_environment_axis/case.json",
+    "size": 371,
+    "sha256": "cfd3905da9323284eaeeff6004e829c6fb9d120fca63d9cd7779e595688a65ab"
+  },
+  {
+    "path": "examples/positive/case_04_future_climate_uncertainty/README.md",
+    "size": 421,
+    "sha256": "25ac1a4454ee7c771be4376e9330e87fc2727359ce76a8730232591fb7d6053f"
+  },
+  {
+    "path": "examples/positive/case_04_future_climate_uncertainty/case.json",
+    "size": 390,
+    "sha256": "9a5696c86eb78b9e576c119581014e1bdbf32084668a169836328a4880c799b3"
+  },
+  {
+    "path": "pyproject.toml",
+    "size": 578,
+    "sha256": "36e830634c5f910e8e856467ad3d6fbd27be3b7d16a486ea9f82dd828b58999e"
+  },
+  {
+    "path": "references/competition_alignment.md",
+    "size": 380,
+    "sha256": "f52c65d06aea9bb31dfe14df3dfb4538a039f181f4289f6517640ecd73e731ba"
+  },
+  {
+    "path": "references/data_requirements.md",
+    "size": 520,
+    "sha256": "ed209331fc7314c3889506d879e509145fe58fc0eaff510f163e4bb79f67e570"
+  },
+  {
+    "path": "references/earth_system_sources.md",
+    "size": 466,
+    "sha256": "dffba29493212eaf127ccb45bca6974a801feed3ca1cd9b5824b718e211efc1b"
+  },
+  {
+    "path": "references/evidence_grading.md",
+    "size": 499,
+    "sha256": "5d4a6b1b878827870a8174ea7557660fd032d07be6fc0abe098770fbfa65287f"
+  },
+  {
+    "path": "references/glossary.md",
+    "size": 680,
+    "sha256": "047a8c1c62d14fa932f1139c607b091827f952ff7eafef72db5faab8328fbb25"
+  },
+  {
+    "path": "references/output_contract.md",
+    "size": 475,
+    "sha256": "9ddb80b248a130f547ea0157abcdaa9f593fbd4fd3946975b3e7b169239315e5"
+  },
+  {
+    "path": "references/scientific_boundaries.md",
+    "size": 490,
+    "sha256": "ae8d9b80c0a760d160fba8a20a665d466296c2b1bb3c1655b922f73c69f349c4"
+  },
+  {
+    "path": "references/statistical_methods.md",
+    "size": 796,
+    "sha256": "0ee8113ba3b3f4937e2922094e3a0e7165600ba4a033927d259a8f9fe80b1bd6"
+  },
+  {
+    "path": "scripts/run_tests.ps1",
+    "size": 89,
+    "sha256": "6406a4e2752c94fbf69e3cbf8ca883c4cee192d8e6f7c6773b1ba65452c37e13"
+  },
+  {
+    "path": "scripts/run_tests.sh",
+    "size": 96,
+    "sha256": "0a256b6f5ff1e684037d2e248c39aed38e38acd56738ab9070f3069009c5f4bd"
+  },
+  {
+    "path": "scripts/validate_skill.py",
+    "size": 2505,
+    "sha256": "cb9cfd3f2bcac7051e63b18655bae3ea24447abcea94016dc483e7ba5a9f9b89"
+  },
+  {
+    "path": "skill.json",
+    "size": 652,
+    "sha256": "6444ac2020a65fd4d8acc12b61f88b0ada68a35aa4e631a7577133416575eae2"
+  },
+  {
+    "path": "tests/test_evidence.py",
+    "size": 699,
+    "sha256": "ee991b63d641ae18b193836c6b98c09868fa634d13ecd89d735a7e2ddc3eecf2"
+  },
+  {
+    "path": "tests/test_governance.py",
+    "size": 768,
+    "sha256": "9a0fbc5843b4c16c3200524973801c8db30a7ad28386583f5d5f8d0040c211e3"
+  },
+  {
+    "path": "tests/test_microbiome.py",
+    "size": 518,
+    "sha256": "5abbe116d1ff455ef97d1605fc39a396ffca1bd95a121ebbc89e774409d5bcde"
+  },
+  {
+    "path": "tests/test_no_embedded_project_data.py",
+    "size": 622,
+    "sha256": "026ccc7bd7fcd81559343b0a881c51a273ce7ff0f57125d7ed4e35d7ae0f6420"
+  },
+  {
+    "path": "uv.lock",
+    "size": 118465,
+    "sha256": "d70c48541813666486ab56e28a67fe574427c41f250fba42a1cdfcac8a0d80aa"
+  },
+  {
+    "path": "workflows/00_quickstart.md",
+    "size": 419,
+    "sha256": "08d850a1b5224e94969fcb376e0f7e7e09c35c6b2fe3bb8e15d7c1398918c7cc"
+  },
+  {
+    "path": "workflows/01_data_intake_and_governance.md",
+    "size": 636,
+    "sha256": "31618deffc12ac66bf521bf6eca98e031b9d54990f5261e2cedeb670bba06a9a"
+  },
+  {
+    "path": "workflows/02_earth_system_environment.md",
+    "size": 715,
+    "sha256": "0d2b0286a0452f3975c0caf41c05bcc9528b770916616e4d810a274ed79e74c5"
+  },
+  {
+    "path": "workflows/03_microbiome_descriptive.md",
+    "size": 494,
+    "sha256": "d5b8046a149130a2c3d0bd5e913997b47eca971cb0d53cd4c86440621ea8f0c7"
+  },
+  {
+    "path": "workflows/04_environment_microbiome_linkage.md",
+    "size": 415,
+    "sha256": "72cf3f09c276360a32c26f84fe6ab8fb4e128a15ed27ed47dab644a2d228e0c6"
+  },
+  {
+    "path": "workflows/05_hypothesis_generation.md",
+    "size": 275,
+    "sha256": "5e20020effa0b82a0cdfb6ab2761b0c1bbf0d12a1d2d7905bfc83af2e257f3f1"
+  },
+  {
+    "path": "workflows/06_human_validation.md",
+    "size": 333,
+    "sha256": "ac589abfa7ff8e7b285710c35ef613c56f8bd3d929731228b21ea95c8178ce59"
+  },
+  {
+    "path": "workflows/07_competition_evidence_packaging.md",
+    "size": 312,
+    "sha256": "032762f924f314537911f0ff41255f8b33846fa98debfa344a7aec92edf14ceb"
+  },
+  {
+    "path": "workflows/08_failure_recovery.md",
+    "size": 448,
+    "sha256": "42c8d3c1668f2e10d3cfbbcfa7f71ab92fadddf71a86efdf2a31264f4fdd92c1"
+  }
+]

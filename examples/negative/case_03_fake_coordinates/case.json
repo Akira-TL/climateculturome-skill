@@ -1,0 +1,7 @@
+{
+  "synthetic": true,
+  "title": "禁止伪造采样坐标",
+  "scenario": "metadata 只有县名和海拔，没有真实经纬度。",
+  "expected_behavior": "禁用点位网格匹配；可进行区域级背景描述或要求补坐标。",
+  "rationale": "行政区中心不是实际采样点。"
+}

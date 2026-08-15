@@ -1,0 +1,7 @@
+{
+  "synthetic": true,
+  "title": "禁止从组均值伪造显著性",
+  "scenario": "只有每组 mean_abundance 和 prevalence，没有样本级矩阵。",
+  "expected_behavior": "拒绝给出 P 值、FDR、PERMANOVA 或“显著富集”；降级为描述性候选。",
+  "rationale": "组级汇总没有正式推断所需的样本级自由度。"
+}

@@ -1,0 +1,7 @@
+{
+  "synthetic": true,
+  "title": "禁止把共享出现写成迁移",
+  "scenario": "Taxon-Y 同时出现在植物和宿主。",
+  "expected_behavior": "只能写“共享出现”；如要研究来源，要求样本级特征矩阵和 source-tracking。",
+  "rationale": "共享出现可能来自广布性、共同暴露或分类学粗粒度。"
+}
