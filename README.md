@@ -1,28 +1,33 @@
 # ClimateCulturome / 地微知候
 
-ClimateCulturome 是一个面向高原/山地环境—宿主微生物连续体研究的可复用 AI Scientist Skill。
+ClimateCulturome 是一个面向环境梯度与宿主微生物组研究的 AI Scientist Skill。它帮助 Agent 先判断数据能支持什么，再选择合适的环境与微生物分析方法，最后把结果整理成可追溯、可验证的科学主张。
 
-它把科研流程组织为：
+它特别适合高原、山地、寒区等环境梯度明显的研究，也可用于其他需要联合分析 16S / ITS / 宏基因组与地球系统环境数据的场景。
 
-**数据治理 → 地球系统环境构建 → 微生物组描述与统计边界控制 → 环境—微生物候选关联 → 可证伪假说 → 人工验证 → provenance / claim-evidence 审计**
+## 它做什么
 
-本仓库是**纯 Skill 包**：包含 Skill 定义、工作流、参考规范、Python CLI、测试与空白模板，但不包含任何真实项目数据、真实采样点、真实研究结果、真实报告或个人信息。
+ClimateCulturome 关注的是科研判断链，而不是单一统计脚本：
 
-## 目录
+- 检查样本、站点、时间、生态位和批次等研究设计信息；
+- 根据 summary 或 sample-level matrix 的数据层级限制分析范围；
+- 组织温度、降水、气压/氧分压、湿度、植被等环境变量；
+- 连接环境变化与微生物响应，同时处理共线性和混杂；
+- 将描述性关联整理为可证伪假说，而不是直接写成机制结论；
+- 用 evidence grading、provenance 和 claim ledger 保留证据链。
 
-```text
-SKILL.md                     # Skill 主定义
-skill.json                   # Skill 元数据
-climateculturome_skill/      # Python 实现与 CLI
-workflows/                   # 分阶段科研工作流
-references/                  # 科学边界、证据等级、统计方法等参考
-examples/                    # 全部为虚构的正向/反向示例
-data_templates/              # 空白/占位输入模板
-scripts/                     # 本地验证脚本
-tests/                       # 单元测试
-```
+核心原则很简单：**结论不能比证据走得更远。**
 
-## 环境
+## 适用场景
+
+例如：
+
+- 不同海拔或区域之间的宿主肠道微生物比较；
+- 宿主与土壤、植物、水体等生态位的联合研究；
+- 微生物组与 ERA5、CMIP6、SoilGrids 等环境数据的整合；
+- 从探索性结果生成下一步统计验证或实验假说；
+- 需要 claim-evidence、provenance 或科研审计链的 AI Scientist 工作流。
+
+## 安装与环境
 
 需要 Python 3.10+，推荐使用 [uv](https://docs.astral.sh/uv/)。
 
@@ -30,22 +35,47 @@ tests/                       # 单元测试
 uv sync --group dev
 ```
 
-## 运行
+仓库入口是 [`SKILL.md`](SKILL.md)。具体科学规则和执行分支按需放在 `workflows/` 与 `references/` 中，Agent 不需要一次性加载全部内容。
 
-预检一个请求：
+## CLI
+
+预检输入：
 
 ```bash
 uv run climateculturome preflight --request data_templates/request.example.json
 ```
 
-执行并输出审计结果：
+执行分析并写出结果：
 
 ```bash
 uv run climateculturome run --request request.json --output output/
+```
+
+检查输出是否满足审计要求：
+
+```bash
 uv run climateculturome audit --output output/
 ```
 
-`data_templates/request.example.json` 仅包含占位符路径。真实数据必须在运行时由用户提供。
+请求格式见：
+
+```text
+data_templates/request.schema.json
+data_templates/request.example.json
+```
+
+## 仓库结构
+
+```text
+SKILL.md                     # Agent 入口与核心决策规则
+workflows/                   # 各阶段执行流程
+references/                  # 证据、统计、科学边界与输出规范
+climateculturome_skill/      # Python CLI 与审计实现
+data_templates/              # 输入模板
+examples/                    # 示例
+scripts/                     # 验证脚本
+tests/                       # 测试
+```
 
 ## 测试
 
@@ -53,25 +83,12 @@ uv run climateculturome audit --output output/
 ./scripts/run_tests.sh
 ```
 
-或：
+或分别运行：
 
 ```bash
 uv run python scripts/validate_skill.py
 uv run pytest -q
 ```
-
-## 数据与隐私边界
-
-仓库明确禁止内置：
-
-- 真实样本表、ASV/OTU/feature matrix；
-- 真实站点坐标与受试者信息；
-- 真实丰度、统计结果和当前研究发现；
-- EarthLink 或其他智能体的真实导出报告；
-- 真实 claim ledger、provenance、运行日志；
-- 未公开论文结果、个人信息和团队隐私。
-
-示例目录中的案例全部为合成/虚构案例。
 
 ## License
 

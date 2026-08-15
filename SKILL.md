@@ -2,336 +2,138 @@
 name: climateculturome
 version: 3.1.0
 description: >-
-  ClimateCulturome（地微知候）是一套面向高原/山地环境—宿主微生物连续体研究的 AI Scientist Skill。
-  它负责数据治理、地球系统环境变量设计、微生物组描述与推断边界控制、环境—微生物候选关联、
-  可证伪假说生成、人工验证规划、provenance 与 claim-evidence 审计。
-  Skill 本身不包含任何真实项目数据、真实采样点、真实报告或既有研究结论。
+  用于高原、山地及其他环境梯度下的环境—宿主微生物连续体研究。负责判断输入数据能支持什么分析，
+  组织环境变量与微生物组分析，生成可证伪假说，并用 evidence grading、provenance 和 claim-evidence
+  审计约束结论强度。适用于 16S/ITS/宏基因组与地球系统环境数据的联合研究。
 argument-hint: "<request.json 或项目数据目录>"
 license: MIT
 metadata:
   domain: earth-science, plateau-ecology, microbiome, ai-scientist
   evidence_model: A/B/C/D
   primary_language: zh-CN
-  data_policy: no-embedded-project-data
 ---
 
-# ClimateCulturome / 地微知候 Skill
+# ClimateCulturome / 地微知候
 
-## 1. 目标
+ClimateCulturome 用来把“环境梯度如何关联宿主与环境微生物变化”这类问题拆成可执行、可审计的科研流程。先判断数据边界，再选择分析方法；结论只能写到当前证据真正支持的位置。
 
-把“环境—宿主微生物连续体”的科研探索组织成一条可复用、可审计、可证伪的 AI Scientist 工作流：
+## 工作流程
 
-**数据治理 → 环境背景构建 → 微生物结构分析 → 环境—微生物关联 → 假说生成 → 人工验证 → 证据审计**
+### 1. 先判断输入能支持什么
 
-本 Skill 适合：
+读取数据目录、样本/站点元数据、微生物矩阵或汇总表、taxonomy、局地环境测量和外部环境数据配置。
 
-- 高原、山地、寒区或其他具有明显环境梯度的生态系统；
-- 宿主粪便/肠道与植物、土壤、水体等多生态位联合研究；
-- 16S/ITS/宏基因组等微生物数据；
-- 公开地球系统数据与局地实测环境数据联合分析；
-- AI Scientist 科研比赛或需要 provenance / claim-evidence ledger 的研究流程。
+先确认：
 
-## 2. Skill 不携带真实研究数据
+- 样本、站点、时间、生态位和批次能否正确对应；
+- 是否有样本级矩阵，还是只有组级 summary；
+- 是否存在真实经纬度和采样时间；
+- missing、zero、`<LOD` 是否被正确区分；
+- 重复测量、分层结构和潜在混杂是否可识别。
 
-本 Skill **禁止内置**：
+需要完整 intake 规则时读取 `workflows/01_data_intake_and_governance.md`；输入要求见 `references/data_requirements.md`。
 
-- 真实样本表、真实 ASV/OTU/feature matrix；
-- 真实站点坐标、真实受试者信息；
-- 真实组间丰度与统计结果；
-- EarthLink 或其他智能体的真实导出报告；
-- 当前项目的 claim ledger、真实 provenance、运行日志；
-- 未公开论文结果、个人信息、团队信息。
+### 2. 构建环境背景
 
-真实数据只在运行时由用户提供。
+有可靠空间与时间锚点时，再匹配地球系统环境变量。变量选择应服从研究问题，不机械堆积指标。
 
-## 3. 核心科学原则
+常见变量包括温度、降水、气压/氧分压、湿度、土壤水分、辐射、风和植被状态。需要外部数据源、时间窗口或提取策略时读取：
 
-### 3.1 数据层级决定能做什么
-
-仅有组级 summary 时，可以做：
-
-- 组成描述；
-- prevalence 描述；
-- 跨生态位共享出现；
-- 候选排序；
-- 假说生成。
-
-但**不能**声称完成：
-
-- Alpha/Beta diversity 正式推断；
-- PERMANOVA / PERMDISP；
-- ANCOM-BC / LEfSe；
-- FEAST / SourceTracker；
-- 共现网络；
-- RDA / db-RDA / CCA；
-- variance partitioning；
-- mixed model；
-- SEM；
-- 因果推断。
-
-### 3.2 共享出现 ≠ 迁移
-
-同一分类单元出现在宿主与环境中，只能称为：
-
-> 跨生态位共享出现 / source-tracking candidate
-
-不能直接称为：
-
-> 从环境迁移进入宿主 / 来源贡献已被证明
-
-### 3.3 空间梯度 ≠ 时间变化
-
-不同海拔/纬度/区域站点之间的空间差异，不能直接替代：
-
-- 气候变化时间序列；
-- 长期重复采样；
-- before/after 实验。
-
-### 3.4 海拔通常是代理变量
-
-海拔可能同时关联：
-
-- 气压与氧分压；
-- 温度；
-- 辐射；
-- 水分；
-- 植被；
-- 土壤；
-- 人类管理。
-
-因此优先构造**复合环境主轴**，而不是把全部差异写成“海拔导致”。
-
-### 3.5 不生成伪坐标
-
-若没有真实采样经纬度：
-
-- 不得用县中心、行政区中心或平均海拔替代；
-- 不得将近似点位包装成真实采样点；
-- 只能进行区域级背景描述，或要求补充坐标。
-
-## 4. 强制证据分级
-
-每个主要科学主张使用以下证据等级：
-
-- **A — Uploaded Fact**：输入文件直接支持的事实。
-- **B — Matched External Evidence**：依据真实空间/时间锚点从公开数据库匹配得到的结果。
-- **C — Descriptive Candidate**：描述性共变、排序、共享出现、候选异常。
-- **D — Hypothesis / Requires Validation**：需要样本级统计、独立验证、时间序列或实验才能成立。
-
-每条 Claim 至少包含：
-
-```yaml
-claim:
-evidence_level:
-supporting_inputs:
-status:
-boundary:
-alternative_explanations:
-next_validation:
-```
-
-## 5. 标准执行流程
-
-### Step 0 — Intake / Preflight
-
-读取：
-
-- dataset registry；
-- sample/site metadata；
-- microbiome matrix 或 summary；
-- taxonomy；
-- local environmental measurements；
-- external-data configuration。
-
-检查：
-
-1. 数据集是否属于同一采样设计；
-2. site/sample/date/niche 主键；
-3. 是否有真实坐标；
-4. 是否存在跨批次同名站点；
-5. 缺失是否被误当 0；
-6. `<LOD` 是否被错误数值化；
-7. 是否存在样本级矩阵；
-8. 是否具备正式统计的必要输入。
-
-### Step 1 — Earth-system environment
-
-对有真实坐标的采样单元，优先构建：
-
-- temperature；
-- precipitation；
-- surface pressure；
-- dry/moist pO₂；
-- relative humidity；
-- soil moisture；
-- shortwave/longwave radiation；
-- cloud cover；
-- wind；
-- vegetation / LAI / NDVI（按可用性）。
-
-建议窗口：
-
-- sampling month；
-- previous 30 days；
-- previous 3 months；
-- previous 12 months；
-- climatology；
-- historical trend；
-- future scenario（若研究问题需要）。
-
-所有外部数据必须记录：
-
-- source；
-- version；
-- variable；
-- spatial resolution；
-- temporal resolution；
-- extraction method；
-- access date；
-- transformation；
-- uncertainty。
-
-### Step 2 — Microbiome analysis
-
-#### 仅 summary 可用
-
-允许：
-
-- composition；
-- prevalence；
-- shared taxa；
-- descriptive rank/order；
-- candidate outlier；
-- domain/niche comparison。
-
-#### 有 sample-level matrix
-
-可进一步进入：
-
-- Alpha diversity；
-- Beta diversity；
-- PERMANOVA + PERMDISP；
-- compositional differential abundance；
-- core microbiome；
-- source tracking；
-- network；
-- constrained ordination；
-- hierarchical/mixed modeling。
-
-但必须先检查统计假设、样本量、重复结构和混杂。
-
-### Step 3 — Environment × Microbiome linkage
-
-优先顺序：
-
-1. 先识别环境共线性；
-2. 构造少量可解释环境轴；
-3. 再连接微生物响应；
-4. niche/domain 分层；
-5. 显式纳入 site/region/year/batch；
-6. 进行 sensitivity analysis；
-7. 记录替代解释。
-
-### Step 4 — Hypothesis generation
-
-每轮优先生成 2–4 条可证伪假说。
-
-每条必须包含：
-
-- `hypothesis`
-- `why_generated`
-- `current_evidence`
-- `evidence_level`
-- `alternative_explanations`
-- `falsifiable_prediction`
-- `next_validation`
-- `stop_condition`
-
-AI 不应把候选规律升级成已证实机制。
-
-### Step 5 — Human validation
-
-人工审核至少覆盖：
-
-- 样本和元数据真实性；
-- 统计模型；
-- 生态学合理性；
-- taxonomy 分辨率；
-- 空间/时间/批次混杂；
-- 因果措辞；
-- 独立验证方案。
-
-### Step 6 — Audit
-
-标准输出：
-
-```text
-audit.json
-provenance.json
-workflow_trace.jsonl
-claim_ledger.csv
-descriptive_candidates.csv
-hypotheses.json
-reproducibility_manifest.json
-scientific_report.md
-```
-
-## 6. 推荐输出状态
-
-- `BLOCKED_BY_INPUTS`：缺少关键输入。
-- `DESCRIPTIVE_ONLY`：只能描述，不足以正式推断。
-- `READY_FOR_STATISTICAL_VALIDATION`：样本级数据齐备，可进入正式统计。
-- `READY_FOR_HUMAN_REVIEW`：AI 分析完成，待人工审核。
-- `VALIDATED_WITH_LIMITATIONS`：人工验证完成，但仍有明确限制。
-
-不要使用“competition_ready=true”替代科学审核。
-
-## 7. 正向与反向用例
-
-- `examples/positive/`：展示应当怎样解释。
-- `examples/negative/`：展示必须阻止的过度推断。
-- 所有示例均为**虚构案例**，不对应任何真实项目或真实站点。
-
-## 8. 参考文档
-
-- `references/data_requirements.md`
-- `references/evidence_grading.md`
+- `workflows/02_earth_system_environment.md`
 - `references/earth_system_sources.md`
-- `references/statistical_methods.md`
-- `references/scientific_boundaries.md`
-- `references/output_contract.md`
-- `references/competition_alignment.md`
-- `references/glossary.md`
 
-## 9. CLI
+如果没有真实坐标，不把行政区中心、平均海拔或推测位置冒充采样点；此时只能做区域级背景描述，或明确要求补充定位信息。
+
+### 3. 按数据层级选择微生物分析
+
+只有组级 summary 时，停留在组成、prevalence、共享出现、描述性排序和候选异常等层面。
+
+有 sample-level matrix 后，才考虑 Alpha/Beta diversity、PERMANOVA/PERMDISP、差异丰度、source tracking、网络、约束排序、mixed model 等正式推断；进入这些分析前仍需检查样本量、重复结构、组成型数据特性和混杂。
+
+具体方法选择读取：
+
+- `workflows/03_microbiome_descriptive.md`
+- `references/statistical_methods.md`
+
+### 4. 连接环境与微生物
+
+先处理环境变量的共线性，再建立少量可解释的环境轴，并在 niche/domain 层面连接微生物响应。site、region、year、batch 等设计因素应进入模型或敏感性分析，而不是事后用文字解释掉。
+
+需要环境—微生物联合分析时读取 `workflows/04_environment_microbiome_linkage.md`。
+
+### 5. 生成可证伪假说
+
+从当前结果中筛选少量值得验证的候选机制。每条假说至少回答：
+
+- 为什么会生成这条假说；
+- 当前证据是什么；
+- 哪些替代解释同样成立；
+- 什么观测或实验结果会推翻它；
+- 下一步最小验证是什么。
+
+默认每轮生成 2–4 条。详细格式见 `workflows/05_hypothesis_generation.md`。
+
+### 6. 人工验证与审计
+
+在形成最终科学表述前，检查统计模型、taxonomy 分辨率、生态学合理性、空间/时间/批次混杂和因果措辞。需要审核流程时读取 `workflows/06_human_validation.md`。
+
+输出 claim ledger、provenance 或研究报告前读取 `references/output_contract.md`；遇到中断、缺失输入或外部数据失败时读取 `workflows/08_failure_recovery.md`。
+
+## 科学边界
+
+以下边界始终成立：
+
+- **共享出现不是迁移证据。** 同一 taxon 同时出现在环境与宿主中，只能先记为 shared occurrence / source-tracking candidate。
+- **空间梯度不是时间变化。** 不把不同海拔、纬度或区域的横截面差异直接写成气候变化效应。
+- **海拔通常是代理变量。** 优先分解气压/氧分压、温度、水分、植被、土壤和管理因素，而不是把所有差异归因于“海拔”。
+- **summary 不能产生样本级显著性。** 没有样本级矩阵时，不伪造 PERMANOVA、差异丰度、网络或 mixed model 结果。
+- **候选关联不是因果机制。** 描述性共变只能推动下一步验证，不能自动升级为机制结论。
+
+更完整的边界与反例见 `references/scientific_boundaries.md`。
+
+## 证据分级
+
+主要科学主张使用 A/B/C/D 四级证据：
+
+- **A — Uploaded Fact**：由输入文件直接支持；
+- **B — Matched External Evidence**：由真实空间/时间锚点匹配公开数据得到；
+- **C — Descriptive Candidate**：描述性共变、排序、共享出现或候选异常；
+- **D — Hypothesis / Requires Validation**：仍需正式统计、独立数据、时间序列或实验验证。
+
+每条重要 claim 都应能追溯到 supporting inputs，并写清 boundary、alternative explanations 和 next validation。细则见 `references/evidence_grading.md`。
+
+## 按需读取
+
+不要一次性加载整个仓库。根据当前阶段读取对应文档：
+
+| 当前任务 | 读取 |
+| --- | --- |
+| 快速了解完整流程 | `workflows/00_quickstart.md` |
+| 数据 intake / 主键 / 缺失值 | `workflows/01_data_intake_and_governance.md` |
+| ERA5、CMIP6 等环境数据 | `workflows/02_earth_system_environment.md`、`references/earth_system_sources.md` |
+| 微生物描述与统计方法 | `workflows/03_microbiome_descriptive.md`、`references/statistical_methods.md` |
+| 环境—微生物联合分析 | `workflows/04_environment_microbiome_linkage.md` |
+| 假说生成 | `workflows/05_hypothesis_generation.md` |
+| 人工审核 | `workflows/06_human_validation.md` |
+| 比赛证据包装 | `workflows/07_competition_evidence_packaging.md` |
+| 输出文件与字段契约 | `references/output_contract.md` |
+| 术语不确定 | `references/glossary.md` |
+
+## 完成条件
+
+一次分析完成时，应满足：
+
+1. 数据层级与研究设计已经明确，分析没有越过输入边界；
+2. 主要 claim 都有证据等级和可追溯输入；
+3. 关联、迁移、时间变化和因果机制没有混写；
+4. 关键替代解释与下一步验证已记录；
+5. 需要正式推断但输入不足时，明确返回受限状态，而不是补造结果；
+6. 最终输出符合 `references/output_contract.md`。
+
+CLI 入口：
 
 ```bash
 climateculturome preflight --request request.json
 climateculturome run --request request.json --output output/
 climateculturome audit --output output/
 ```
-
-详细请求格式见：
-
-```text
-data_templates/request.schema.json
-data_templates/request.example.json
-```
-
-其中 `request.example.json` 只包含占位符，不包含真实数据。
-
-## 10. 完成判据
-
-一个合格运行至少满足：
-
-- 不跨设计自动合并；
-- 不使用伪坐标；
-- 不把 missing 当 zero；
-- 不凭 summary 生成样本级显著性；
-- 不把 shared taxa 写成 transfer；
-- 不把 space-for-time 当成真实时间变化；
-- 所有 C/D claim 有替代解释；
-- provenance 可追溯；
-- 结论强度与证据等级一致。
-
-**Skill 的自动审计只验证工作流与表述边界，不替代科研人员的统计审核和学术判断。**

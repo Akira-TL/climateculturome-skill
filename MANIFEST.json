@@ -1,21 +1,16 @@
 {
-  "package": "地微知候_ClimateCulturome_Skill_v3.1_纯Skill版",
+  "package": "climateculturome",
+  "display_name": "地微知候 ClimateCulturome",
   "version": "3.1.0",
-  "kind": "pure-skill",
-  "contains_real_project_data": false,
-  "contains_real_project_results": false,
-  "contains_real_project_reports": false,
-  "contains_personal_information": false,
-  "examples_are_synthetic": true,
-  "sections": [
-    "skill definition",
+  "kind": "ai-scientist-skill",
+  "entrypoint": "SKILL.md",
+  "components": [
     "workflows",
     "references",
-    "synthetic positive examples",
-    "synthetic negative examples",
-    "runtime data templates",
-    "python implementation",
-    "cli",
+    "examples",
+    "data_templates",
+    "climateculturome_skill",
+    "scripts",
     "tests"
   ]
 }

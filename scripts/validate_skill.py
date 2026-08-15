@@ -9,6 +9,7 @@ REQUIRED_FILES = [
     "SKILL.md",
     "README.md",
     "skill.json",
+    "MANIFEST.json",
     "LICENSE",
     "pyproject.toml",
     ".gitignore",
@@ -73,10 +74,13 @@ manifest = json.loads((ROOT / "MANIFEST.json").read_text(encoding="utf-8"))
 request_schema = json.loads(
     (ROOT / "data_templates/request.schema.json").read_text(encoding="utf-8")
 )
+
 assert skill_meta["entrypoint"] == "SKILL.md"
-assert skill_meta["data_policy"]["embedded_project_data"] is False
-assert manifest["contains_real_project_data"] is False
-assert manifest["contains_personal_information"] is False
+assert skill_meta["type"] == "ai-scientist-skill"
+assert manifest["package"] == skill_meta["name"]
+assert manifest["version"] == skill_meta["version"]
+assert manifest["kind"] == skill_meta["type"]
+assert manifest["entrypoint"] == skill_meta["entrypoint"]
 assert request_schema["type"] == "object"
 
 for case_path in sorted((ROOT / "examples").rglob("case.json")):
@@ -88,4 +92,4 @@ for case_path in sorted((ROOT / "examples").rglob("case.json")):
 license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
 assert "Permission is hereby granted" in license_text, "LICENSE is not a complete MIT license"
 
-print("PURE_SKILL_VALIDATION_OK")
+print("SKILL_VALIDATION_OK")

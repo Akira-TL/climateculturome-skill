@@ -16,23 +16,23 @@
   },
   {
     "path": "MANIFEST.json",
-    "size": 548,
-    "sha256": "a7cf1c7028459d00a59034e1f6004ba87634f127f65125f8ab8609e852055d6f"
+    "size": 322,
+    "sha256": "85306d176bcd493118c67b1552b84b9f5f273f01d6358d9a16f13d93d8c3ada9"
   },
   {
     "path": "README.md",
-    "size": 2255,
-    "sha256": "4f527bece2ebe8b245e0e306cf1f08774b1fad75935877e6a25a2159b019ae92"
+    "size": 2841,
+    "sha256": "2b2fe8f9a3f26afdd675e371babc4529d93e68925d2ee6e596996cd62e191501"
   },
   {
     "path": "SKILL.md",
-    "size": 8676,
-    "sha256": "ecf0adc9cccec961389395688e2feecb83c2af6e88ed9bf0981c2bf3b5ca853d"
+    "size": 6846,
+    "sha256": "b04366d0e94410513b885ce8bdebce747bd8b85fdc4c04bcf5e1ac4fc8179e86"
   },
   {
     "path": "VALIDATION.md",
-    "size": 456,
-    "sha256": "bdba13a2e185d69b34fc86718b8d3beeb4fa33503db07a9acb01178995b46d40"
+    "size": 868,
+    "sha256": "3fefd1369ff28a70c046cdc9978b84cecdbec533ecbaab1363f3f716aeb0db7e"
   },
   {
     "path": "climateculturome_skill/__init__.py",
@@ -266,13 +266,13 @@
   },
   {
     "path": "scripts/validate_skill.py",
-    "size": 2505,
-    "sha256": "cb9cfd3f2bcac7051e63b18655bae3ea24447abcea94016dc483e7ba5a9f9b89"
+    "size": 2597,
+    "sha256": "d6c0b9f93b890aaab034670df8f6d5bc7e3fc3c9dd4cfc8c9e853299205698a6"
   },
   {
     "path": "skill.json",
-    "size": 652,
-    "sha256": "6444ac2020a65fd4d8acc12b61f88b0ada68a35aa4e631a7577133416575eae2"
+    "size": 644,
+    "sha256": "68071988dd60f0be6c0259967ea50dd12eea4aa391169d2f53d28c9023f94876"
   },
   {
     "path": "tests/test_evidence.py",
